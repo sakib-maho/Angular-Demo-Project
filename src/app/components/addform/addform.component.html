@@ -1,0 +1,194 @@
+
+<mat-sidenav-container class="example-container">
+    <mat-card>
+        <mat-card-title-group>
+            <img  width="170vh" height="34vh" src="assets/img/angular.svg" >
+          </mat-card-title-group>
+    </mat-card>
+    <mat-sidenav opened mode="side">
+      
+            <mat-toolbar>
+                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                    <mat-icon>account_circle</mat-icon>
+                    Intern Ex...        
+                    <mat-icon>keyboard_arrow_down</mat-icon>
+                  </button>
+                  <mat-menu #menu="matMenu">
+                    <button mat-menu-item>
+                      <mat-icon>account_circle</mat-icon>
+                      <span>My Account</span>
+                    </button>
+                    <button mat-menu-item>
+                      <mat-icon>info</mat-icon>
+                      <span>About</span>
+                    </button>
+                    <button routerLink="/login" mat-menu-item>
+                      <mat-icon>exit_to_app</mat-icon>
+                      <span>Logout</span>
+                    </button>
+                  </mat-menu>
+                <span class="example-spacer"></span>
+                
+                <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+                    <mat-icon>menu</mat-icon>
+                  </button>
+              </mat-toolbar>
+              <br>
+              <div class="item" >
+				<mat-icon class="moveright">assignment</mat-icon>
+				<!-- <img src="drive-tick.png"> -->
+				<span class="moveright">From</span>
+			</div>
+            </mat-sidenav>
+            
+           
+          
+              <div class="tablepad">
+                <div><a class="atag" routerLink="/question-builder">Form</a> > Create Form</div>
+                <h1 style="padding-top:5px;">Add Form</h1>
+                <div class="demo-button-container">
+                  <form [formGroup]="profileForm" class="form-container" (ngSubmit)="logValue()">
+                    <mat-card>
+                    
+                      <mat-card-header>
+                      
+                      </mat-card-header>
+                      <mat-card-content>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <mat-form-field class="inputWidth">
+                              <input  formControlName="title" matInput placeholder="Title">
+                            </mat-form-field>
+                          </div>
+                          <div class="col-md-6">
+                            <mat-form-field class="inputWidth" hintLabel="Character left {{input.value?.length || 0}}/200" >
+                             
+                              <input formControlName="formDescription" matInput #input maxlength="200" placeholder="Form Description">
+                              
+                            </mat-form-field>
+                          </div>
+                        </div>
+                       
+                      </mat-card-content>
+
+                      
+                     <br>
+                    </mat-card>
+                    <br> <br>
+                    <mat-card style="border-left: 5px solid #fec44d;">
+                      <mat-card-header>
+                      
+                      </mat-card-header>
+                      <mat-card-content>
+                        <div class="row">
+                          <div style="display:flex; justify-content: space-between;" class="col-md-6">
+                            <mat-form-field class="inputWidthh">
+                              <mat-label>Question</mat-label>
+                              <input  matInput placeholder="Question" [formControl]="question" required>
+                              <mat-error *ngIf="question.invalid">{{getErrorMessage()}}</mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline">
+                              <mat-label>Question Type</mat-label>
+                              <mat-select [(value)]="selected" required>
+                                <mat-option (click)="option1()" value="option1">Multiple Choice</mat-option>
+                                <mat-option (click)="option2()" value="option2">Liner Scale</mat-option>
+                                <mat-option (click)="option3()" value="option3">Checkbox</mat-option>
+                                <mat-option (click)="option4()" value="option4">Short Text</mat-option>
+                                <mat-option (click)="option5()" value="option5">File Upload</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+                          <ng-template [ngIf]= "show == 'option1'">
+                            Show: {{selected}}
+                          </ng-template>
+                          <ng-template [ngIf]= "show == 'option2'">
+                            Show: {{selected}}
+                          </ng-template>
+                          <ng-template [ngIf]= "show == 'option3'">
+                            <form #addressForm="ngForm" class="container" >
+    
+   
+                              <section class="container border mb-4 p-3" *ngFor="let answer of answers; let i = index;">
+                                <div class="row">   
+                                </div>
+                                <div class="row">
+                                  <div  class="col-6">
+                                      <div  class="form-group">
+                                        <div style="display:flex; ">
+                                          <mat-icon class="icon">check_box_outline_blank</mat-icon>
+                                          <mat-form-field >
+                                            <input   matInput placeholder="Answer" class="form-control" [(ngModel)]="answer.answer" name="answer_{{answer.id}}">
+                                          </mat-form-field>
+                                          <ng-template [ngIf]= "showw != 0">
+                                            <div class="closeicon" >
+                                              <button mat-icon-button  (click)="removeAnswer(i)" aria-label="Example icon button with a home icon">
+                                                <mat-icon>close</mat-icon>
+                                              </button>
+                                              
+                                            </div>
+                                          </ng-template>
+                                        </div>
+                            
+                                       
+                                        
+                                        </div>
+                                  </div>
+                                
+                                </div>
+                                
+                                
+                              </section>
+                              <div  style="display:flex; ">
+                                <mat-icon class="addopt" >check_box_outline_blank</mat-icon>
+                                <a  mat-button (click)="addAnswer()">Add Option</a>
+                              
+                              </div>
+                            
+               
+                            </form>
+                          </ng-template>
+                          <ng-template [ngIf]= "show == 'option4'">
+                            Show: {{selected}}
+                          </ng-template>
+                          <ng-template [ngIf]= "show == 'option5'">
+                            Show: {{selected}}
+                          </ng-template>
+                          
+                        </div>
+
+                        
+                       
+                      </mat-card-content>
+                     
+                      
+                     
+                    </mat-card>
+                      
+                      <div style="display:flex; justify-content: space-between; padding:3vh;">
+                        <button routerLink="/question-builder" style="height:7vh; width:20vh;"  mat-button=""><span class="mat-button-wrapper"> Discard </span><div class="mat-button-ripple mat-ripple" matripple=""></div><div class="mat-button-focus-overlay"></div></button>
+                        <ng-template [ngIf]= "show == 'option3'">
+                          <button class="subbtn" style="background-color: #005ba9; height:7vh; width:20vh;" (click)="saveForm()"  color="primary" mat-flat-button=""><span class="mat-button-wrapper"> Save Form </span><div class="mat-button-ripple mat-ripple" matripple=""></div><div class="mat-button-focus-overlay"></div></button>
+                        </ng-template>
+                        <ng-template [ngIf]= "show != 'option3'">
+                          <button disabled class="subbtn" style=" height:7vh; width:20vh;" (click)="saveForm()"  color="primary" mat-flat-button=""><span class="mat-button-wrapper"> Save Form </span><div class="mat-button-ripple mat-ripple" matripple=""></div><div class="mat-button-focus-overlay"></div></button>
+                        </ng-template>
+                        
+                        
+                      </div>
+                      
+                    
+                  </form>
+                  
+                 
+                  
+                
+                 
+                  </div>
+                  
+           
+
+              </div>
+             
+             
+</mat-sidenav-container>
+  

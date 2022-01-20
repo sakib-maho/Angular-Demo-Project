@@ -1,0 +1,127 @@
+
+<mat-sidenav-container class="example-container">
+  <mat-card>
+      <mat-card-title-group>
+          <img  width="170vh" height="39vh" src="assets/img/angular.svg" >
+        </mat-card-title-group>
+  </mat-card>
+  <mat-sidenav opened mode="side">
+    
+          <mat-toolbar>
+              <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                  <mat-icon>account_circle</mat-icon>
+                  Intern Ex...        
+                  <mat-icon>keyboard_arrow_down</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item>
+                    <mat-icon>account_circle</mat-icon>
+                    <span>My Account</span>
+                  </button>
+                  <button mat-menu-item>
+                    <mat-icon>info</mat-icon>
+                    <span>About</span>
+                  </button>
+                  <button routerLink="/login" mat-menu-item>
+                    <mat-icon>exit_to_app</mat-icon>
+                    <span>Logout</span>
+                  </button>
+                </mat-menu>
+              <span class="example-spacer"></span>
+              
+              <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+                  <mat-icon>menu</mat-icon>
+                </button>
+            </mat-toolbar>
+            <hr>
+            <br>
+            <div class="item" >
+      <mat-icon class="moveright">assignment</mat-icon>
+      <span class="moveright">From</span>
+    </div>
+          </mat-sidenav>
+          
+         
+        
+            <div class="tablepad">
+              <div><a class="atag" routerLink="/question-builder">Form</a> > {{ ntitle }} > Form Details</div>
+              
+              <div class="indiv">
+                <a style="color: black;" href="/question-builder"><mat-icon  class="indivicon">arrow_back</mat-icon></a>
+
+                
+                <h1 class="iconh1">{{ ntitle }}</h1>
+              </div>
+              
+              <div class="demo-button-container">
+               
+               
+                <mat-card class="cardSize"   fxflex="70" fxlayout="column" style="flex-direction: column; box-sizing: border-box; display: flex; flex: 1 1 100%; max-height: 70%;">
+                  <mat-card-title  class="pb-12 w-100-p mat-card-title" fxlayout="column" style="flex-direction: column; box-sizing: border-box; display: flex;">
+                    <div   fxlayout="row" fxlayoutalign="space-between center" style="flex-direction: row; box-sizing: border-box; display: flex; place-content: center space-between; align-items: center; flex: 1 1 1e-09px;">
+                      <div  fxflex="80" style="flex: 1 1 100%; box-sizing: border-box; max-width: 80%;">
+                        <span  class="poppins-medium font-size-24"> {{ ntitle }} </span>
+                      </div>
+                      <div  fxlayoutalign="end center" style="place-content: center flex-end; align-items: center; flex-direction: row; box-sizing: border-box; display: flex; flex: 1 1 0%;">
+                        <button [routerLink]="['/question-builder/update']" [state]="{ id: f_id , c_date:c_date, title: ntitle, fdes: descrip, qus: question, opt: arr, name: name, arr: arr}"  color="primary" mat-icon-button="" class="mat-icon-button mat-button-base mat-primary">
+                          <span class="mat-button-wrapper">
+                            <mat-icon  class="mat-icon notranslate material-icons mat-icon-no-color" role="img" aria-hidden="true">edit</mat-icon>
+                          </span><div class="mat-button-ripple mat-ripple mat-button-ripple-round" matripple="">
+
+                          </div><div class="mat-button-focus-overlay">
+
+                          </div>
+                        </button>
+                      </div>
+                    </div>
+                    <br>
+                    <div >
+                      <span style="font-size: 14px;" > {{descrip}} </span>
+                    </div>
+                  </mat-card-title>
+                  <br><br><br>
+                  <mat-card-content _ngcontent-arc2-c59="" class="pt-24 mat-card-content" fxlayout="column" style="flex-direction: column; box-sizing: border-box; display: flex;">
+                    <div _ngcontent-arc2-c59="" fxlayout="row" fxlayoutgap="64px" style="flex-direction: row; box-sizing: border-box; display: flex;">
+                      <div _ngcontent-arc2-c59="" class="topic poppins-medium" fxlayout="column" style="margin-right: 64px; flex-direction: column; box-sizing: border-box; display: flex;">
+                        <span _ngcontent-arc2-c59="">Created</span>
+                        <span _ngcontent-arc2-c59="">{{c_date}}</span>
+                      </div>
+                      <div _ngcontent-arc2-c59="" class="topic poppins-medium" fxlayout="column" style="flex-direction: column; box-sizing: border-box; display: flex;">
+                        <span _ngcontent-arc2-c59="">Last Updated </span>
+                        <span _ngcontent-arc2-c59="">{{ up_date }}</span>
+                      </div>
+                    </div>
+                  </mat-card-content>
+                </mat-card>
+                <br>
+                <mat-card class="BottomcardSize"   fxflex="70" fxlayout="column" style="flex-direction: column; box-sizing: border-box; display: flex; flex: 1 1 100%; max-height: 70%;">
+                  <mat-card-title  class="pb-12 w-100-p mat-card-title" fxlayout="column" style="flex-direction: column; box-sizing: border-box; display: flex;">
+                    
+                    <br>
+                    <div >
+                      <span style="font-size: 14px;" > {{question}} </span>
+                    </div>
+                  </mat-card-title>
+                  <br>
+                 
+                  <div *ngFor="let optn of arr">
+                    <div  style="display:flex; ">
+                      <mat-icon class="icon">check_box_outline_blank</mat-icon>
+                      <span >{{optn}}</span>                    
+                    </div>
+                    <br>
+                  </div>
+                 
+                </mat-card>
+                
+              
+               
+              </div>
+                
+         
+
+            </div>
+           
+           
+</mat-sidenav-container>
+

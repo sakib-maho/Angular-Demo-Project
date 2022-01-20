@@ -1,0 +1,74 @@
+<html>
+<body>
+  
+  <div class="loginform">
+    
+
+    <div class="left">
+      <img src="assets/img/main1.jpeg" width="880vh" height="100%">
+      <div class="centered">
+        <img class="icon" src="assets/img/icon.png" width="160vh" >     
+        <br><br><br>
+        <h1>Auditing and Certification Platform</h1>
+        <p> Standardization & Innovation Brought to Auditing, Certification & <br>Inspection Bodies Worldwide  </p>
+      </div>
+      
+    </div>
+    
+    <div class="right">
+    
+      <br>
+      <br>
+      <br><br>
+      <img src="assets/img/logo.png" width="100vh" >     
+      <br><br><br>  
+      <form [formGroup]="profileForm" class="form-container">
+        
+            <mat-card-header>
+              <mat-card-title>LOGIN</mat-card-title>
+              <br>
+            </mat-card-header>
+            <mat-card-content>
+              <div class="row">
+                <div class="col-md-6">
+                  <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Email</mat-label>
+                      <input class="email"  matInput  [formControl]="email" required  >
+                      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Password</mat-label>
+                      <input  matInput [formControl]="passFormControl" [type]="hide ? 'password' : 'text'">
+                      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" >
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      </button>
+                      <mat-error *ngIf="passFormControl.hasError('minLength') && !passFormControl.hasError('required')">
+                    </mat-error>
+        
+                  </mat-form-field>
+                </div>
+              </div>
+            
+            </mat-card-content>
+            <a class="atag" routerLink="forgot-password">Forgot Password?</a>
+           <br><br>
+           
+            <mat-card-actions>
+              <button class="loginbtn" (click)="saveForm()" mat-raised-button color="primary">LOGIN</button>
+            </mat-card-actions>
+          
+        </form>
+        
+        <div>
+          
+        </div>
+      
+    </div>
+
+  
+  </div>
+
+</body>
+</html>

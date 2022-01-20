@@ -1,0 +1,8 @@
+<p>Value: {{ name.value }}</p>
+
+<input id="name" type="text" [formControl]="name">
+<button (click)="updateName()">Update Name</button>
+
+<br><br><br>
+<h1>{{ name.value }}</h1>
+<button (click)="update()" mat-raised-button color="primary">Edit</button>

@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroupDirective, NgForm, Validators }  from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
+
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -10,26 +11,14 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   }
 }
 
-
-
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-forgotpass',
+  templateUrl: './forgotpass.component.html',
+  styleUrls: ['./forgotpass.component.css']
 })
+export class ForgotpassComponent {
 
-
-
-
-
-export class AppComponent {
-  title: string = 'angular-project';
   hide = true;
-
-  public static apiURL: string = "https://itsolutionstuff.com/";
-      
-  public static siteTitle: string = "This is example of ItSolutionStuff.com";
-
 
   email = new FormControl('', [Validators.required, Validators.email]);
   passFormControl= new FormControl('', [Validators.required,   Validators.minLength(1)]);
@@ -61,6 +50,6 @@ export class AppComponent {
       console.log('Not permited')
     }
   }
- 
- }
 
+
+}

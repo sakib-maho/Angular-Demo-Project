@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroupDirective, NgForm, Validators }  from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
-
+import { Router, ActivatedRoute, ParamMap, RouterLink } from '@angular/router';
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -10,26 +10,16 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   }
 }
 
-
-
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
+export class LoginComponent  {
 
+  
 
-
-
-
-export class AppComponent {
-  title: string = 'angular-project';
   hide = true;
-
-  public static apiURL: string = "https://itsolutionstuff.com/";
-      
-  public static siteTitle: string = "This is example of ItSolutionStuff.com";
-
 
   email = new FormControl('', [Validators.required, Validators.email]);
   passFormControl= new FormControl('', [Validators.required,   Validators.minLength(1)]);
@@ -45,7 +35,8 @@ export class AppComponent {
 
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
-  constructor(private formBuilder:FormBuilder){}
+  constructor(private formBuilder:FormBuilder, private route: ActivatedRoute,
+    private router: Router){}
  
   profileForm = this.formBuilder.group({
    
@@ -56,11 +47,12 @@ export class AppComponent {
     console.log('Form pass is ', this.passFormControl.value);
     if (this.email.value === 'sakib@gmail.com' && this.passFormControl.value === '1234') {
       console.log('Permited')
+      this.router.navigate(['/question-builder'])
+      
     }
     else{
       console.log('Not permited')
     }
   }
- 
- }
 
+}

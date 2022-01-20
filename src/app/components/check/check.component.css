@@ -1,0 +1,22 @@
+.example-margin {
+    margin: 0 12px;
+    
+  }
+
+.icon{
+    padding: 3vh;
+}
+
+.addbtton{
+  padding-top: 1vh;
+  padding-left: 2vh;
+}
+
+.closeicon{
+  margin-top: 1.5vh;
+  margin-left: 50vh;
+}
+
+.addopt{
+  padding: 1vh;
+}
