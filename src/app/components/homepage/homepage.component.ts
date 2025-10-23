@@ -1,3 +1,9 @@
+/**
+ * Copyright (c) 2025 sakib-maho
+ * Licensed under the MIT License
+ * See LICENSE file for details
+ */
+
 import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import {animate, state, style, transition, trigger} from '@angular/animations';
